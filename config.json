@@ -1,0 +1,28 @@
+{
+    "gateway_port": 3000,
+    "facilitator_url": "https://www.x402.org/facilitator",
+    "target_api_url": "http://127.0.0.1:11434",
+    "networks": [
+        {
+            "type": "evm",
+            "network": "base-sepolia",
+            "payment_address": "0xd232A8b0F63a555d054134f67b298ffE955f3BAf"
+        },
+        {
+            "type": "solana",
+            "network": "solana-devnet",
+            "payment_address": "EGBQqKn968sVv5cQh5Cr72pSTHfxsuzq7o7asqYB5uEV"
+        }
+    ],
+    "routes": {
+        "free": [
+            "/api/version"
+        ],
+        "protected": [
+            {
+                "path": "/api/chat",
+                "usdc_amount": 100
+            }
+        ]
+    }
+}
