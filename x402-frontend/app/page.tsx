@@ -3,7 +3,7 @@
 import { FormEvent, useMemo, useState } from 'react';
 import { wrapFetchWithPaymentFromConfig } from '@x402/fetch';
 import { ExactEvmScheme } from '@x402/evm';
-import { useWalletClient } from 'wagmi';
+import { useWalletClient, usePublicClient } from 'wagmi';
 import { ConnectWallet } from '@/components/ConnectWallet';
 import { keccak256, recoverPublicKey, Hex } from 'viem';
 import ReactMarkdown from 'react-markdown';
@@ -131,6 +131,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { data: walletClient } = useWalletClient();
+  const publicClient = usePublicClient();
 
   const endpoint = useMemo(() => CHAT_API_URL, []);
 
@@ -157,7 +158,7 @@ export default function Home() {
         content: message.content,
       }));
 
-      const fetchFn = walletClient
+      const fetchFn = (walletClient && publicClient)
         ? wrapFetchWithPaymentFromConfig(fetch, {
           schemes: [
             {
@@ -166,6 +167,7 @@ export default function Home() {
                 address: walletClient.account.address,
                 signTypedData: (args: Parameters<typeof walletClient.signTypedData>[0]) =>
                   walletClient.signTypedData(args),
+                readContract: (args: any) => publicClient.readContract(args as any),
               }),
             },
           ],
