@@ -19,7 +19,7 @@ type ChatMessage = {
   pubkey?: string;
 };
 
-const DEFAULT_MODEL = 'qwen3:0.6b';
+const DEFAULT_MODEL = 'qwen3.5:0.8b';
 const CHAT_API_URL = process.env.NEXT_PUBLIC_CHAT_API_URL ?? 'http://127.0.0.1:3000/api/chat-v2';
 
 /** Build the signing message exactly as the Rust verifier does (oyster-signature-v2). */
