@@ -14,15 +14,10 @@
             "payment_address": "EGBQqKn968sVv5cQh5Cr72pSTHfxsuzq7o7asqYB5uEV"
         }
     ],
-    "routes": {
-        "free": [
-            "/api/version"
-        ],
-        "protected": [
-            {
-                "path": "/api/chat",
-                "usdc_amount": 100
-            }
-        ]
-    }
+    "protected_routes": [
+        {
+            "path": "/api/chat",
+            "usdc_amount": 100
+        }
+    ]
 }

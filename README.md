@@ -39,14 +39,13 @@ The gateway is configured via a `config.json` file.
 | Field | Description |
 |-------|-------------|
 | `gateway_port` | Port the gateway listens on (default `3000`) |
-| `facilitator_url` | x402 facilitator service URL |
-| `target_api_url` | Backend API to proxy requests to (e.g. Ollama) |
-| `networks[].type` | `"evm"` or `"solana"` |
-| `networks[].network` | Network ID (e.g. `"base-sepolia"`, `"solana-devnet"`) |
-| `networks[].payment_address` | Your wallet address for receiving payments |
-| `routes.free` | Public routes that bypass payment |
-| `routes.protected[].path` | Route path requiring payment |
-| `routes.protected[].usdc_amount` | Cost in USDC micro-units (1000 = 0.001 USDC) |
+| `facilitator_url` | x402 facilitator service URL (e.g., `https://www.x402.org/facilitator`) |
+| `target_api_url` | Backend API to proxy requests to (e.g., `http://127.0.0.1:11434`) |
+| `networks[].type` | Type of blockchain network (`"evm"` or `"solana"`) |
+| `networks[].network` | Network ID (e.g., `"base-sepolia"`, `"solana-devnet"`) |
+| `networks[].payment_address` | Wallet address for receiving payments (e.g., `0xd232A8b0F63a555d054134f67b298ffE955f3BAf` for EVM or `EGBQqKn968sVv5cQh5Cr72pSTHfxsuzq7o7asqYB5uEV` for Solana) |
+| `protected_routes[].path` | Protected API route (e.g., `"/api/chat"`) |
+| `protected_routes[].usdc_amount` | USDC amount required for accessing the route (e.g., `100`) |
 
 ### Frontend
 
